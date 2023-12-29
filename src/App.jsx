@@ -39,11 +39,24 @@ function App() {
     setGroceryItems(updatedGroceryList);
   };
 
+  const handleUpdateCompletedStatus = (status, index) => {
+    const updatedGroceryList = [...groceryItems];
+    updatedGroceryList[index].completed = status;
+    setGroceryItems(updatedGroceryList);
+  };
+
   const renderGroceryList = () => {
-    return groceryItems.map((item) => (
+    return groceryItems.map((item, index) => (
       <li key={item.name}>
         <div className="container">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              handleUpdateCompletedStatus(e.target.checked, index);
+            }}
+            value={item.completed}
+            checked={item.completed}
+          />
           <p>
             {item.name}
             {item.quantity > 1 && <span> x{item.quantity}</span>}
