@@ -25,6 +25,20 @@ function App() {
       }
     }
   };
+
+  const renderGroceryList = () => {
+    return groceryItems.map((item) => (
+      <li key={item.name}>
+        <div className="container">
+          <input type="checkbox" />
+          <p>{item.name}</p>
+        </div>
+        <div>
+          <button className="remove-button">X</button>
+        </div>
+      </li>
+    ));
+  };
   return (
     <main className="App">
       <div>
@@ -41,6 +55,7 @@ function App() {
             placeholder="Add an Item"
           />
         </div>
+        <ul>{renderGroceryList()}</ul>
       </div>
     </main>
   );
