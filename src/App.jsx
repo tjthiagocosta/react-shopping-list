@@ -15,11 +15,11 @@ function App() {
       if (inputValue) {
         const updatedGroceryList = [...groceryItems];
         const itemIndex = updatedGroceryList.findIndex(
-          (item) => item.name === inputValue
+          (item) => item.name === inputValue.toLocaleLowerCase()
         );
         if (itemIndex === -1) {
           updatedGroceryList.push({
-            name: inputValue,
+            name: inputValue.toLocaleLowerCase(),
             quantity: 1,
             completed: false,
           });
